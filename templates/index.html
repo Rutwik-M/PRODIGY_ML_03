@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodigy Task-03: SVM Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐶 Cat vs Dog SVM Classifier 🐱</h1>
+            <p>Powered by Histogram of Oriented Gradients (HOG)</p>
+        </header>
+
+        <div class="upload-section">
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="image" required accept="image/*">
+                <button type="submit" class="btn">Analyze Image</button>
+            </form>
+        </div>
+
+        {% if prediction %}
+        <div class="result-section">
+            <div class="prediction-box">
+                <h2>Prediction: <span class="{{ prediction.lower() }}">{{ prediction }}</span></h2>
+                <p>Confidence Score: <strong>{{ confidence }}%</strong></p>
+            </div>
+
+            <div class="comparison">
+                <div class="card">
+                    <h3>Human View</h3>
+                    <img src="{{ original }}" alt="Original Image">
+                </div>
+                <div class="card">
+                    <h3>AI View (HOG Features)</h3>
+                    <img src="{{ hog }}" alt="HOG Visualization" style="filter: contrast(150%);">
+                    <p class="note">This is what the SVM actually "sees" (Edges & Gradients)</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
