@@ -77,5 +77,6 @@ Start the Flask server:
     ```
 Open your browser and navigate to: `http://127.0.0.1:5000/`
 
+![Project-Banner](static/images/scr.png)
 
 
